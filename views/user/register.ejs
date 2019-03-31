@@ -7,7 +7,7 @@
     <title>User Login</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link rel="stylesheet" href="/stylesheets/styleRegister.css">
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -28,23 +28,24 @@
             </div>
         </div>
     </nav>
-    <div class="card" >
-        <div class="heading" align="center">
-                <h1>Login Page</h1>
-        </div>
-            <div class="container">
-                    <form action="/action_page.php">
-                        Email ID : <br>
-                        <input type="text" name="firstname" ><br>
-                        Password : <br>
-                        <input type="password" name="lastname"><br><br>
-                        <a href="/main" class="button">Sign In</a>
-                        <a href="/register" class="button button1" >New Register</a>
-                    </form> 
-            </div>
-          </div>
+    <div class="card">
+        <h1 align="center">New Register</h1>
+
+        <form action="/action_page.php">
+        Email ID : <br>
+        <input type="email" name="emailid" ><br>
+        Password : <br>
+        <input type="password" name="pass"><br>
+        Confirm Password : <br>
+        <input type="password" name="confirmpass"><br>
+        Enter Data of Birth : <br>
+        <input type="date" name="date"><br>
+        Enter Address : <br>
+        <input type="text" name="addres"><br>
+        Enter Adhar Number : <br>
+        <input type="text" name="adhar"><br>
+        <a href="/" class="button">Submit</a>
+    </form>
+    </div>   
 </body>
 </html>
-
-
-
