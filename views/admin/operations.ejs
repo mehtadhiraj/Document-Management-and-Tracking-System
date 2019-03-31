@@ -47,5 +47,53 @@
             </div>
         </div>
     </div>
+    <h1 align="center" class="p-5">Upload Documents for OCR</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <form id="uploadForm" enctype="multipart/form-data" action="/admin/scan" method="post">
+                <input type="file" name="userPhoto" class="form-control"/><br>
+                <input type="submit" value="Upload File" name="submit" class="btn btn-secondary">
+                <span id = "status"></span>
+           </form>
+        </div>
+        <div class="col-md-6">
+            <form id="submit data" enctype="multipart/form-data" action="/admin/docs" method="post">
+                <input type="text" name="path" id="path" class="form-control" readonly="true" hidden/><br>
+                <input type="text" name="name" id="name" class="form-control"/><br>
+                <input type="text" name="regno" id="regno" class="form-control"/><br>
+                <input type="text" name="address" id="address" class="form-control"/><br>
+                <input type="submit" value="Confirm" name="submit" class="btn btn-secondary">
+                
+            </form>
+        </div>
+    </div>
 </div>
 <%- include('./partials/footer') -%>
+<script>
+    $(document).ready(function() {
+    
+        $('#uploadForm').submit(function() {
+            $("#status").empty().text("File is uploading...");
+            $(this).ajaxSubmit({
+    
+            error: function(xhr) {
+                status('Error: ' + xhr.status);
+            },
+    
+            success: function(response) {
+                $("#status").empty().text('File uploaded');
+                console.log(response);
+                var textArray = response.text.replace('\\n'," ").split(" ");
+                console.log(textArray);
+                $('#path').val(response.path);
+                $('#name').val(textArray[2]);
+                $('#regno').val(textArray[6]);
+                $('#address').val(textArray[9]);
+
+            }
+        });
+        //Very important line, it disable the page refresh.
+        return false;
+        });    
+    });
+</script>    
